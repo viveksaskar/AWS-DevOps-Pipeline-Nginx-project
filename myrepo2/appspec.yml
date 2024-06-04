@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /usr/share/nginx/html
+    #not /var/www/html
+hooks:
+  AfterInstall:
+    - location: scripts/install_nginx.sh
+      timeout: 300
+      runas: root
+      #runas for root persmission
+  ApplicationStart:
+    - location: scripts/start_nginx.sh
+      timeout: 300
+      runas: root
+      
